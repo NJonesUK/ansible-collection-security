@@ -1,0 +1,23 @@
+---
+- name: Ensure git, Python 2, tkinter and pip are installed
+  apt:
+    name: ['git', 'python', 'python-tk', 'python-pip']
+    state: present
+
+- name: Ensure tools directory exists
+  file:
+    path: "{{ tools_dir }}"
+    state: directory
+    mode: 0755
+
+- name: Clone aws-inventory repository
+  git:
+    repo: https://github.com/nccgroup/aws-inventory.git
+    dest: "{{ tools_dir }}/aws-inventory"
+    accept_hostkey: yes
+    force: yes
+    version: HEAD
+
+- name: Install aws-inventory pip requirements
+  pip:
+    requirements: "{{ tools_dir }}/aws-inventory/requirements.txt"
