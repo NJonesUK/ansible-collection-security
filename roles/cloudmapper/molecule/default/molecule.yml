@@ -3,7 +3,7 @@ dependency:
   name: galaxy
 driver:
   name: docker
-lint:  ansible-lint -x 401
+lint:  ansible-lint -x 401,305
 platforms:
   - name: instance
     image: kalilinux/kali-linux-docker:latest

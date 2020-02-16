@@ -1,12 +1,13 @@
 - name: Ensure cloudmapper apt dependencies are installed
   apt:
-    name: ['git', 'python3', 'python3-pip', 'autoconf', 'automake', 'libtool', 'python3.7-dev', 'python3-tk', 'jq', 'python3-distutils', 'python3-apt', "python3-setuptools", "python-pip"]
+    name: ['git', 'python3', 'python3-pip', 'autoconf', 'automake', 'libtool',
+      'python3.7-dev', 'python3-tk', 'jq', 'python3-distutils', 'python3-apt', "python3-setuptools", "python-pip"]
     state: present
 
 - name: Clone cloudmapper repository
   git:
     repo: https://github.com/duo-labs/cloudmapper.git
-    dest: "{{tools_dir}}/cloudmapper"
+    dest: "{{ tools_dir }}/cloudmapper"
     accept_hostkey: yes
     force: yes
     version: HEAD
@@ -20,5 +21,5 @@
 - name: Install pipenv, if it doesn't already exist
   shell: pipenv install --skip-lock
   args:
-    chdir: "{{tools_dir}}/cloudmapper"
+    chdir: "{{ tools_dir }}/cloudmapper"
     creates: Pipfile.lock
