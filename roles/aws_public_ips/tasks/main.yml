@@ -1,0 +1,10 @@
+# https://github.com/arkadiyt/aws_public_ips.git
+- name: Install ruby and gem
+  apt:
+    name: ruby-full
+    state: present
+
+- name: install aws_public_ips
+  gem:
+    name: aws_public_ips
+    state: present
