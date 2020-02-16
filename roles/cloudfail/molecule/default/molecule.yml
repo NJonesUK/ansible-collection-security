@@ -1,0 +1,13 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: docker
+lint:  ansible-lint -x 401
+platforms:
+  - name: instance
+    image: kalilinux/kali-linux-docker:latest
+provisioner:
+  name: ansible
+verifier:
+  name: testinfra
