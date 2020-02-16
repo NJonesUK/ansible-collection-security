@@ -1,0 +1,51 @@
+---
+- name: Install Java and unzip
+  apt:
+    name: [openjdk-11-jdk-headless, unzip]
+    update_cache: yes
+    cache_valid_time: 3600
+    install-recommends: no
+    state: present
+
+- name: Add Neo4j apt key
+  apt_key:
+    url: "{{ neo4j_gpg_key }}"
+    state: present
+
+- name: Add Neo4j apt repository
+  apt_repository:
+    repo: "{{ neo4j_repo }}"
+    state: present
+
+- name: Update packages
+  apt:
+    update_cache: yes
+
+- name: Install Neo4j via apt
+  apt:
+    name: neo4j
+    install-recommends: no
+    state: present
+
+- name: Stop Neo4j service
+  service:
+    name: neo4j
+    state: stopped
+
+- name: Ensure Bloodhound dir exists
+  file:
+    path: "{{ tools_dir }}/bloodhound"
+    state: directory
+
+- name: Download Bloodhound
+  unarchive:
+    src: "{{ bloodhound_download_url }}"
+    dest: "{{ tools_dir }}/bloodhound"
+    remote_src: yes
+
+- name: Start Neo4j service
+  service:
+    name: neo4j
+    state: started
+
+

@@ -1,0 +1,5 @@
+---
+tools_dir: /tools
+bloodhound_download_url: https://github.com/BloodHoundAD/BloodHound/releases/download/3.0.0/BloodHound-linux-arm64.zip
+neo4j_gpg_key: https://debian.neo4j.com/neotechnology.gpg.key
+neo4j_repo: "deb https://debian.neo4j.com stable 3.5"
