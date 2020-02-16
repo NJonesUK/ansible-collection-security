@@ -1,0 +1,43 @@
+---
+- name: Ensure git, python, pip are installed
+  apt:
+    name: "{{item}}"
+    update_cache: yes
+    state: present
+  with_items:
+    - git
+    - python-dev
+    - python-pip
+
+- name: Clone DET repository
+  git:
+    repo=https://github.com/sensepost/DET.git
+    dest=/tools/det
+    accept_hostkey=yes
+    version=master
+
+- name: Install DET apt requirements
+  apt:
+    name: "{{ item }}"
+    update_cache: yes
+    cache_valid_time: 86400
+    install-recommends: no
+    state: present
+  with_items:
+    - gcc
+    - python-dev
+    - python-pip
+
+- name: Install DET pip requirements
+  pip:
+    name: "{{ item }}"
+  with_items:
+    - SQLAlchemy
+    - PrettyTable
+    - python-magic
+  become: yes
+
+- name: Install DET pip requirements from requirements.txt
+  pip:
+    requirements: /tools/det/requirements.txt
+  become: yes

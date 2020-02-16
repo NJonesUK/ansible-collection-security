@@ -1,0 +1,14 @@
+---
+- name: Ensure ruby's installed
+  apt:
+    name: "{{item}}"
+    state: present
+  with_items:
+    - ruby-full
+    - ruby-bundler
+  become: "true"
+
+- name: Gem install Brakeman
+  gem:
+    name: brakeman
+    state: present

@@ -1,0 +1,16 @@
+- name: Ensure Node, npm and git are installed
+  apt:
+    name: ['nodejs', 'npm', 'git']
+    state: present
+
+- name: Clone cloudsploit scans repository
+  git:
+    repo: https://github.com/cloudsploit/scans
+    dest: "{{tools_dir}}/cloudsploit_scans"
+    accept_hostkey: yes
+    force: yes
+    version: HEAD
+
+- name: Install packages based on package.json.
+  npm:
+    path: "{{tools_dir}}/cloudsploit_scans"
