@@ -2,11 +2,11 @@
   apt:
     name: ['git', 'python', 'python-pip']
     state: present
-    
+
 - name: Clone cloudjack repository
   git:
     repo: https://github.com/prevade/cloudjack.git
-    dest: "{{tools_dir}}/cloudjack"
+    dest: "{{ tools_dir }}/cloudjack"
     accept_hostkey: yes
     force: yes
     version: HEAD
