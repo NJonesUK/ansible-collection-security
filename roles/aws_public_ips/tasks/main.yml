@@ -1,0 +1,10 @@
+- name: Install ruby and gem
+  apt:
+    name: ruby-full
+    state: present
+    update_cache: "yes"
+
+- name: install aws_public_ips
+  gem:
+    name: aws_public_ips
+    state: present

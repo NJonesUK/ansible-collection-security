@@ -1,0 +1,7 @@
+---
+- name: Converge
+  hosts: all
+  tasks:
+    - name: "Include aws_inventory"
+      include_role:
+        name: "aws_inventory"

@@ -1,0 +1,7 @@
+---
+- name: Converge
+  hosts: all
+  tasks:
+    - name: "Include aws_pwn"
+      include_role:
+        name: "aws_pwn"
