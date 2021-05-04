@@ -1,0 +1,32 @@
+---
+- name: Ensure tools directory exists
+  file:
+   path: "{{tools_dir}}"
+   state: directory
+   mode: 0755
+
+- name: Install prerequisites
+  apt:
+    name: 
+      - "git"
+      - "python3"
+      - "python3-dev"
+      - "python3-pip"
+      - "python3-virtualenv"
+    state: present
+    update_cache: yes
+  become: yes
+
+- name: Clone cloudjack repository
+  git:
+    repo: https://github.com/prevade/cloudjack.git
+    dest: "{{tools_dir}}/cloudjack"
+    accept_hostkey: yes
+    force: yes
+    version: HEAD
+
+- name: Install cloudjack pip requirements
+  pip:
+    name: boto3
+    state: present
+

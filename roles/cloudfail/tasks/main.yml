@@ -1,0 +1,27 @@
+---
+- name: Ensure tools directory exists
+  file:
+   path: "{{tools_dir}}"
+   state: directory
+   mode: 0755
+
+- name: Ensure git, python, pip are installed
+  apt:
+    name:
+      - git
+      - python3-dev
+      - python3-pip
+      - python3-virtualenv
+    update_cache: yes
+    state: present   
+
+- name: Clone CloudFail repository
+  git:
+    repo: https://github.com/m0rtem/CloudFail.git
+    dest: "{{tools_dir}}/cloudfail"
+    accept_hostkey: yes
+
+- name: Install CloudFail pip requirements from requirements.txt
+  pip:
+    requirements: "{{tools_dir}}/cloudfail/requirements.txt"
+    virtualenv: "{{tools_dir}}/cloudfail/venv"
