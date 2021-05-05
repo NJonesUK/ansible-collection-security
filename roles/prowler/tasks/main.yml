@@ -1,0 +1,23 @@
+- name: Ensure apt prereqs are installed
+  apt:
+    name: 
+      - "python3"
+      - "python3-pip"
+      - "jq"
+      - "git"
+    state: present
+    update_cache: true
+  become: yes
+
+- name: Install detect-secrets
+  pip:
+    name: detect-secrets
+    state: present
+
+- name: Clone Prowler repository
+  git:
+    repo: https://github.com/toniblyx/prowler.git
+    dest: "{{tools_dir}}/prowler"
+    accept_hostkey: yes
+    force: yes
+    version: HEAD
