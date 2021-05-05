@@ -1,0 +1,7 @@
+---
+- name: Converge
+  hosts: all
+  tasks:
+    - name: "Include gcp-iam-collector"
+      include_role:
+        name: "gcp-iam-collector"
