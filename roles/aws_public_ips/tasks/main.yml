@@ -3,6 +3,7 @@
     name: ruby-full
     state: present
     update_cache: "yes"
+  become: "yes"
 
 - name: install aws_public_ips
   gem:

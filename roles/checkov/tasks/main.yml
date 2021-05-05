@@ -6,6 +6,7 @@
       - python3-pip
     state: present
     update_cache: yes
+  become: "yes"
 
 - name: Install checkov
   pip:
