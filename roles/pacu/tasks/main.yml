@@ -1,0 +1,23 @@
+---
+- name: Ensure prerequisites are installed
+  apt:
+    name:
+      - "python3"
+      - "python3-pip"
+      - "python3-virtualenv"
+      - "git"
+    state: present
+    update_cache: true
+
+- name: Clone Pacu repository
+  git:
+    repo: https://github.com/RhinoSecurityLabs/pacu.git
+    dest: "{{tools_dir}}/pacu"
+    accept_hostkey: yes
+    force: yes
+    version: HEAD
+
+- name: Install pacu pip requirements
+  pip:
+    requirements: "{{tools_dir}}/pacu/requirements.txt"
+    virtualenv: "{{tools_dir}}/pacu/venv"
