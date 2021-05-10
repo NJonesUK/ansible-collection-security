@@ -1,0 +1,11 @@
+- name: Install ruby and gem
+  apt:
+    name: ruby-full
+    state: present
+    update_cache: yes
+  become: yes
+
+- name: install cfn-nag
+  gem:
+    name: cfn-nag
+    state: present

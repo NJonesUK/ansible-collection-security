@@ -1,0 +1,11 @@
+- name: Install ruby and gem
+  apt:
+    name: ruby-full
+    state: present
+    update_cache: true
+  become: true
+
+- name: install aws_recon
+  gem:
+    name: aws_recon
+    state: present

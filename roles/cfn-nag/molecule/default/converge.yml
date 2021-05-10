@@ -1,0 +1,7 @@
+---
+- name: Converge
+  hosts: all
+  tasks:
+    - name: "Include cfn-nag"
+      include_role:
+        name: "cfn-nag"

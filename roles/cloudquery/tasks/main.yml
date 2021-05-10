@@ -1,0 +1,8 @@
+# https://github.com/cloudquery/cloudquery/
+
+- name: Download cloudquery
+  get_url:
+    url: https://github.com/cloudquery/cloudquery/releases/latest/download/cloudquery_Linux_x86_64
+    dest: /usr/bin/cloudquery
+    mode: '0755'
+  become: yes
