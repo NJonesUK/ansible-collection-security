@@ -1,0 +1,13 @@
+# https://github.com/accurics/terrascan
+
+- name: Ensure tools directory exists
+  file:
+   path: "{{tools_dir}}/terrascan"
+   state: directory
+   mode: 0755
+
+- name: Download and unpack terrascan
+  ansible.builtin.unarchive:
+    src: https://github.com/accurics/terrascan/releases/download/v{{ terrascan_version }}/terrascan_{{ terrascan_version }}_Linux_x86_64.tar.gz
+    dest: "{{tools_dir}}/terrascan"
+    remote_src: yes

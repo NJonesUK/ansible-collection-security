@@ -1,0 +1,7 @@
+---
+- name: Converge
+  hosts: all
+  tasks:
+    - name: "Include parliament"
+      include_role:
+        name: "parliament"
