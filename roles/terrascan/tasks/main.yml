@@ -1,10 +1,14 @@
 # https://github.com/accurics/terrascan
 
+---
 - name: Ensure tools directory exists
   file:
-   path: "{{tools_dir}}/terrascan"
+   path: "{{tools_dir}}"
    state: directory
    mode: 0755
+   owner: "{{ ansible_user_id }}"
+   group: "{{ ansible_user_id }}"
+
 
 - name: Download and unpack terrascan
   ansible.builtin.unarchive:

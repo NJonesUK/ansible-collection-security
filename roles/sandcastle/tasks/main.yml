@@ -1,3 +1,12 @@
+---
+- name: Ensure tools directory exists
+  file:
+   path: "{{tools_dir}}"
+   state: directory
+   mode: 0755
+   owner: "{{ ansible_user_id }}"
+   group: "{{ ansible_user_id }}"
+
 - name: Ensure prerequisites are installed
   apt:
     name: 
@@ -7,6 +16,7 @@
       - "git"
     state: present
     update_cache: yes
+  become: true
 
 - name: Clone sandcastle repository
   git:

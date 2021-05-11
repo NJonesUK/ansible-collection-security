@@ -17,3 +17,4 @@
     name: ['cloudsplaining']
     state: present
     executable: pip3
+  become: yes

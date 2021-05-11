@@ -13,3 +13,4 @@
     name: checkov
     state: present
     executable: pip3
+  become: yes
