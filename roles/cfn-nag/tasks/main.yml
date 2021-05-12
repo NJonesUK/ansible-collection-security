@@ -9,3 +9,4 @@
   gem:
     name: cfn-nag
     state: present
+  become: yes

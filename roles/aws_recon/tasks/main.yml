@@ -9,3 +9,4 @@
   gem:
     name: aws_recon
     state: present
+  become: yes
