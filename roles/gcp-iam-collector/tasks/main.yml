@@ -11,6 +11,7 @@
       - python3-virtualenv
     state: present
     update_cache: true
+  become: true
 
 - name: Clone gcp-iam-collector repository
   git:

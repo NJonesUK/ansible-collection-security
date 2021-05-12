@@ -7,6 +7,7 @@
       - "git"
     state: present
     update_cache: yes
+  become: true
 
 - name: Clone PMapper repository
   git:

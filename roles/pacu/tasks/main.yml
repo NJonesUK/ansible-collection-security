@@ -8,6 +8,7 @@
       - "git"
     state: present
     update_cache: true
+  become: true
 
 - name: Clone Pacu repository
   git:

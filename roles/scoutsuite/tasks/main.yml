@@ -5,6 +5,7 @@
       - python3-pip
     state: present
     update_cache: true
+  become: true
 
 - name: Install scoutsuite
   pip:
