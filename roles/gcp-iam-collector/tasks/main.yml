@@ -6,6 +6,7 @@
    mode: 0755
    owner: "{{ ansible_user_id }}"
    group: "{{ ansible_user_id }}"
+  become: true
 
 - name: Install prerequisites
   apt:
@@ -20,7 +21,7 @@
       - python3-virtualenv
     state: present
     update_cache: true
-  become: yes
+  become: true
 
 - name: Clone gcp-iam-collector repository
   git:

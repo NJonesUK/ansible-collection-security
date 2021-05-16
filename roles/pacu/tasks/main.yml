@@ -6,6 +6,7 @@
    mode: 0755
    owner: "{{ ansible_user_id }}"
    group: "{{ ansible_user_id }}"
+  become: true
 
 - name: Ensure prerequisites are installed
   apt:
@@ -16,7 +17,7 @@
       - "git"
     state: present
     update_cache: true
-  become: yes
+  become: true
 
 - name: Clone Pacu repository
   git:

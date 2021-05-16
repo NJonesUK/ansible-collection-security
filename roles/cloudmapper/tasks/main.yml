@@ -30,7 +30,7 @@
       - "libpng-dev"
     state: present
     update_cache: yes
-  become: yes
+  become: true
 
 - name: Clone cloudmapper repository
   git:
