@@ -6,6 +6,7 @@
    mode: 0755
    owner: "{{ ansible_user_id }}"
    group: "{{ ansible_user_id }}"
+  become: true
 
 - name: Ensure cloudmapper apt dependencies are installed
   apt:
