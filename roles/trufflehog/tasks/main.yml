@@ -1,0 +1,6 @@
+---
+- name: Install TruffleHog
+  pip:
+    name: truffleHog
+    state: present
+  become: yes
