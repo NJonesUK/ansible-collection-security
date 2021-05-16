@@ -1,0 +1,33 @@
+---
+- name: Ensure tools directory exists
+  file:
+   path: "{{tools_dir}}"
+   state: directory
+   mode: 0755
+   owner: "{{ ansible_user_id }}"
+   group: "{{ ansible_user_id }}"
+  become: true
+
+- name: Ensure enumerate-iam apt dependencies are installed
+  apt:
+    name: 
+      - "git"
+      - "python3"
+      - "python3-pip"
+      - "python3-virtualenv"
+    state: present
+    update_cache: yes
+  become: true
+
+- name: Clone enumerate-iam repository
+  git:
+    repo: https://github.com/andresriancho/enumerate-iam.git
+    dest: "{{tools_dir}}/enumerate-iam"
+    accept_hostkey: yes
+    force: yes
+    version: HEAD
+
+- name: Install enumerate-iam pip requirements
+  pip:
+    requirements: "{{tools_dir}}/enumerate-iam/requirements.txt"
+    virtualenv: "{{tools_dir}}/enumerate-iam/venv"
