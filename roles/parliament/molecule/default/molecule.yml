@@ -4,12 +4,12 @@ dependency:
 driver:
   name: docker
 platforms:
-  - name: kali
+  - name: kali-parliament
     options:
       ansible_python_interpreter: /usr/bin/python3
     image: kalilinux/kali-rolling:latest
     log: true
-  - name: ubuntu
+  - name: ubuntu-parliament
     options:
       ansible_python_interpreter: /usr/bin/python3
     image: ubuntu:latest
