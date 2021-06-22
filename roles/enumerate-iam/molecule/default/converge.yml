@@ -1,0 +1,7 @@
+---
+- name: Converge
+  hosts: all
+  tasks:
+    - name: "Include enumerate-iam"
+      include_role:
+        name: "enumerate-iam"

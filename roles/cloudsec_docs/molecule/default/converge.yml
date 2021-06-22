@@ -1,0 +1,7 @@
+---
+- name: Converge
+  hosts: all
+  tasks:
+    - name: "Include cloudsec_docs"
+      include_role:
+        name: "cloudsec_docs"

@@ -1,0 +1,8 @@
+# https://github.com/goldfiglabs/rpCheckup
+
+- name: Download and unpack rpCheckup
+  get_url:
+    url: https://github.com/goldfiglabs/rpCheckup/releases/latest/download/rpCheckup_linux
+    dest: /usr/bin/rpCheckup
+    mode: '0755'
+  become: true
