@@ -1,0 +1,6 @@
+repos:
+  - https://github.com/SummitRoute/aws_exposable_resources.git
+  - https://github.com/SummitRoute/aws_breaking_changes.git
+  - https://github.com/RhinoSecurityLabs/GCP-IAM-Privilege-Escalation.git
+  - https://github.com/RhinoSecurityLabs/Cloud-Security-Research.git
+  - https://github.com/RhinoSecurityLabs/AWS-IAM-Privilege-Escalation.git
